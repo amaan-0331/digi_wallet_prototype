@@ -1,0 +1,6 @@
+{
+  "appTitle": "digi_wallet_prototype",
+  "@appTitle": {
+    "description": "The title of the application"
+  }
+}
