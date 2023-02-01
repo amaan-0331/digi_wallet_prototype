@@ -1,7 +1,7 @@
-import 'package:digi_wallet_prototype/src/sample_feature/sample_item_details_view.dart';
-import 'package:digi_wallet_prototype/src/sample_feature/sample_item_list_view.dart';
+import 'package:digi_wallet_prototype/src/onboarding_feature/onboarding_view.dart';
 import 'package:digi_wallet_prototype/src/settings/settings_controller.dart';
 import 'package:digi_wallet_prototype/src/settings/settings_view.dart';
+import 'package:digi_wallet_prototype/src/shared/theme/theme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
@@ -55,8 +55,8 @@ class DigiWalletApp extends StatelessWidget {
           // Define a light and dark color theme. Then, read the user's
           // preferred ThemeMode (light, dark, or system default) from the
           // SettingsController to display the correct theme.
-          theme: ThemeData(),
-          darkTheme: ThemeData.dark(),
+          theme: buildLightTheme(),
+          darkTheme: buildDarkTheme(),
           themeMode: settingsController.themeMode,
 
           // Define a function to handle named routes in order to support
@@ -68,11 +68,8 @@ class DigiWalletApp extends StatelessWidget {
                 switch (routeSettings.name) {
                   case SettingsView.routeName:
                     return SettingsView(controller: settingsController);
-                  case SampleItemDetailsView.routeName:
-                    return const SampleItemDetailsView();
-                  case SampleItemListView.routeName:
                   default:
-                    return const SampleItemListView();
+                    return const OnboardingView();
                 }
               },
             );
