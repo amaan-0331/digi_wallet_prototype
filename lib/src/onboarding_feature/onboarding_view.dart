@@ -3,6 +3,7 @@
 import 'package:digi_wallet_prototype/src/shared/components/hero_logo.dart';
 import 'package:digi_wallet_prototype/src/shared/components/main_button.dart';
 import 'package:digi_wallet_prototype/src/shared/theme/colors.dart';
+import 'package:digi_wallet_prototype/src/signin_view/signin_view.dart';
 import 'package:flutter/material.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
@@ -75,8 +76,19 @@ class _OnboardingViewState extends State<OnboardingView> {
 
             //button
             MainButton(
-              buttonWidget: const Text('Get Started'),
-              buttonFunction: () {},
+              buttonWidget: Text(
+                'Get Started',
+                style: Theme.of(context)
+                    .textTheme
+                    .labelSmall
+                    ?.copyWith(color: AppColors.white),
+              ),
+              buttonFunction: () => Navigator.push(
+                context,
+                MaterialPageRoute<SignInView>(
+                  builder: (context) => const SignInView(),
+                ),
+              ),
               size: Size(size.width / 2.5, 66),
             ),
           ],
@@ -108,13 +120,9 @@ class ContentScreen extends StatelessWidget {
             alignment: Alignment.centerRight,
             child: (currentPageIndex != 2)
                 ? TextButton(
-                    child: const Text(
+                    child: Text(
                       'Skip',
-                      style: TextStyle(
-                        color: AppColors.white,
-                        fontWeight: FontWeight.w300,
-                        fontSize: 18,
-                      ),
+                      style: Theme.of(context).textTheme.labelMedium,
                     ),
                     onPressed: () => controller.animateToPage(
                       2,
@@ -130,24 +138,20 @@ class ContentScreen extends StatelessWidget {
 
           //description
           Column(
-            children: const [
+            children: [
               Text(
                 'Investing for everybody',
-                style: TextStyle(
-                  color: Colors.white,
-                  fontWeight: FontWeight.bold,
-                  fontSize: 26,
-                ),
+                textAlign: TextAlign.center,
+                style: Theme.of(context).textTheme.headlineLarge,
               ),
-              SizedBox(height: 20),
+              const SizedBox(height: 20),
               Text(
                 r'We let you easily invest in fractional shares for as little as $1',
                 textAlign: TextAlign.center,
-                style: TextStyle(
-                  fontWeight: FontWeight.w300,
-                  color: AppColors.white,
-                  fontSize: 21,
-                ),
+                style: Theme.of(context)
+                    .textTheme
+                    .bodyLarge
+                    ?.copyWith(color: AppColors.white),
               ),
             ],
           ),

@@ -56,7 +56,7 @@ class DigiWalletApp extends StatelessWidget {
           // preferred ThemeMode (light, dark, or system default) from the
           // SettingsController to display the correct theme.
           theme: buildLightTheme(),
-          darkTheme: buildDarkTheme(),
+          // darkTheme: buildDarkTheme(),
           themeMode: settingsController.themeMode,
 
           // Define a function to handle named routes in order to support

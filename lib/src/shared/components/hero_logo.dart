@@ -13,25 +13,27 @@ class AppLogo extends StatelessWidget {
   Widget build(BuildContext context) {
     return Flex(
       direction: direction,
+      mainAxisSize: MainAxisSize.min,
       children: [
         Hero(
           tag: 'app-logo-image',
           child: Image.asset(
             'assets/images/app_logo.png',
-            height: (direction == Axis.vertical) ? null : 22,
+            height: (direction == Axis.vertical) ? null : 25,
           ),
         ),
-        const Padding(
-          padding: EdgeInsets.all(8),
+        Padding(
+          padding: const EdgeInsets.all(8),
           child: Hero(
             tag: 'app-logo-text',
             child: Text(
               'Digi-Wallet',
-              style: TextStyle(
-                color: AppColors.white,
-                fontWeight: FontWeight.bold,
-                fontSize: 26,
-              ),
+              style: (direction == Axis.vertical)
+                  ? Theme.of(context).textTheme.titleLarge
+                  : Theme.of(context)
+                      .textTheme
+                      .titleSmall
+                      ?.copyWith(color: AppColors.blackLogo),
             ),
           ),
         ),
