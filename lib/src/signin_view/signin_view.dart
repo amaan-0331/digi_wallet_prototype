@@ -5,6 +5,7 @@ import 'package:digi_wallet_prototype/src/shared/components/hero_logo.dart';
 import 'package:digi_wallet_prototype/src/shared/components/main_button.dart';
 import 'package:digi_wallet_prototype/src/shared/components/secondary_button.dart';
 import 'package:digi_wallet_prototype/src/shared/theme/colors.dart';
+import 'package:digi_wallet_prototype/src/verification_feature/verification_success_view.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
@@ -118,7 +119,7 @@ class SignInView extends StatelessWidget {
               //button
               MainButton(
                 buttonWidget: Text(
-                  'Get Started',
+                  'Sign In',
                   style: Theme.of(context)
                       .textTheme
                       .labelSmall
@@ -126,8 +127,8 @@ class SignInView extends StatelessWidget {
                 ),
                 buttonFunction: () => Navigator.push(
                   context,
-                  MaterialPageRoute<SignInView>(
-                    builder: (context) => const SignInView(),
+                  MaterialPageRoute<VerificationSuccessView>(
+                    builder: (context) => const VerificationSuccessView(),
                   ),
                 ),
                 size: Size(size.width, 66),
