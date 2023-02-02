@@ -1,3 +1,4 @@
+import 'package:digi_wallet_prototype/src/auth/setup_face_view.dart';
 import 'package:digi_wallet_prototype/src/shared/components/main_button.dart';
 import 'package:digi_wallet_prototype/src/shared/theme/colors.dart';
 import 'package:flutter/material.dart';
@@ -67,8 +68,8 @@ class VerificationSuccessView extends StatelessWidget {
                 ),
                 buttonFunction: () => Navigator.push(
                   context,
-                  MaterialPageRoute<VerificationSuccessView>(
-                    builder: (context) => const VerificationSuccessView(),
+                  MaterialPageRoute<Widget>(
+                    builder: (context) => const SetupFaceView(),
                   ),
                 ),
                 size: Size(size.width, 66),

@@ -15,6 +15,8 @@ class AppColors {
   static const lightGrey = Color(0xFFE9E9E9);
 
   static const darkGrey = Color(0xFF797979);
+
+  static const purple = Color(0xFF5C428F);
 }
 
 ColorScheme buildLightColorScheme() {
