@@ -1,9 +1,9 @@
 // ignore_for_file: lines_longer_than_80_chars
 
+import 'package:digi_wallet_prototype/src/auth/signin_view.dart';
 import 'package:digi_wallet_prototype/src/shared/components/hero_logo.dart';
 import 'package:digi_wallet_prototype/src/shared/components/main_button.dart';
 import 'package:digi_wallet_prototype/src/shared/theme/colors.dart';
-import 'package:digi_wallet_prototype/src/signin_view/signin_view.dart';
 import 'package:flutter/material.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 

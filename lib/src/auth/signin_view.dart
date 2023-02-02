@@ -1,11 +1,11 @@
 // ignore_for_file: lines_longer_than_80_chars
 
+import 'package:digi_wallet_prototype/src/auth/verification_success_view.dart';
 import 'package:digi_wallet_prototype/src/shared/components/form_field.dart';
 import 'package:digi_wallet_prototype/src/shared/components/hero_logo.dart';
 import 'package:digi_wallet_prototype/src/shared/components/main_button.dart';
 import 'package:digi_wallet_prototype/src/shared/components/secondary_button.dart';
 import 'package:digi_wallet_prototype/src/shared/theme/colors.dart';
-import 'package:digi_wallet_prototype/src/verification_feature/verification_success_view.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
