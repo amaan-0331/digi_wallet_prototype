@@ -22,27 +22,6 @@ class SettingsView extends StatelessWidget {
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          // DropdownButton<ThemeMode>(
-          //   // Read the selected themeMode from the controller
-          //   value: controller.themeMode,
-          //   // Call the updateThemeMode method any time the user selects a theme.
-          //   onChanged: controller.updateThemeMode,
-          //   items: const [
-          //     DropdownMenuItem(
-          //       value: ThemeMode.system,
-          //       child: Text('System Theme'),
-          //     ),
-          //     DropdownMenuItem(
-          //       value: ThemeMode.light,
-          //       child: Text('Light Theme'),
-          //     ),
-          //     DropdownMenuItem(
-          //       value: ThemeMode.dark,
-          //       child: Text('Dark Theme'),
-          //     )
-          //   ],
-          // ),
-
           //general
           const SizedBox(height: 25),
           Padding(
@@ -71,7 +50,7 @@ class SettingsView extends StatelessWidget {
                 (states) => Colors.white,
               ),
               onChanged: (bool value) {
-                if (controller.themeMode == ThemeMode.light) {
+                if (value) {
                   controller.updateThemeMode(ThemeMode.dark);
                 } else {
                   controller.updateThemeMode(ThemeMode.light);

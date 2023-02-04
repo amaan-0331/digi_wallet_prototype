@@ -2,6 +2,7 @@ import 'package:digi_wallet_prototype/src/home/bottom_nav_bar.dart';
 import 'package:digi_wallet_prototype/src/home/card_widget.dart';
 import 'package:digi_wallet_prototype/src/home/stock_list_tile.dart';
 import 'package:digi_wallet_prototype/src/home/wishlist_chip.dart';
+import 'package:digi_wallet_prototype/src/money_request_feature/money_request_view.dart';
 import 'package:digi_wallet_prototype/src/notifications/notifications_view.dart';
 import 'package:digi_wallet_prototype/src/shared/theme/colors.dart';
 import 'package:flutter/material.dart';
@@ -32,7 +33,12 @@ class _HomeViewState extends State<HomeView> {
       floatingActionButton: Padding(
         padding: const EdgeInsets.only(bottom: 30),
         child: FloatingActionButton(
-          onPressed: () {},
+          onPressed: () => Navigator.push(
+            context,
+            MaterialPageRoute<Widget>(
+              builder: (context) => const MoneyRequestView(),
+            ),
+          ),
           shape: const CircleBorder(),
           child: SvgPicture.asset('assets/icons/scan.svg'),
         ),
