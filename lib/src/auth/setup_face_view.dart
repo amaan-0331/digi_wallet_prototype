@@ -1,4 +1,5 @@
 import 'package:digi_wallet_prototype/src/auth/profile_scanner.dart';
+import 'package:digi_wallet_prototype/src/home/home_view.dart';
 import 'package:digi_wallet_prototype/src/shared/components/app_bar.dart';
 import 'package:digi_wallet_prototype/src/shared/components/main_button.dart';
 import 'package:digi_wallet_prototype/src/shared/theme/colors.dart';
@@ -111,7 +112,7 @@ class _SetupFaceViewState extends State<SetupFaceView>
               buttonFunction: () => Navigator.push(
                 context,
                 MaterialPageRoute<Widget>(
-                  builder: (context) => const SetupFaceView(),
+                  builder: (context) => const HomeView(),
                 ),
               ),
               size: Size(size.width, 66),

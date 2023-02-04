@@ -5,10 +5,13 @@ class AppColors {
   static const Color navy = Color(0xff010A5C);
 
   static const Color black900 = Color(0xFF000000);
-  static const Color blackLogo = Color(0xFF2D3748);
+  static const Color blackGrey = Color(0xFF2D3748);
+  static const Color blackCharcoal = Color(0xFF2B2B2B);
 
   static const Color errorLight = Color(0xFFCF7779);
   static const Color errorDark = Color(0xFFFF4C5D);
+
+  static const Color green = Color(0xFF33D49D);
 
   static const Color white = Color(0xFFFFFFFF);
 

@@ -32,8 +32,8 @@ class AppLogo extends StatelessWidget {
                   ? Theme.of(context).textTheme.titleLarge
                   : Theme.of(context)
                       .textTheme
-                      .titleSmall
-                      ?.copyWith(color: AppColors.blackLogo),
+                      .titleMedium
+                      ?.copyWith(color: AppColors.blackGrey),
             ),
           ),
         ),

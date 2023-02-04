@@ -42,6 +42,8 @@ TextTheme _buildLightTextTheme(TextTheme base) {
       fontSize: 26,
       letterSpacing: 0.4,
     ),
+
+    // home titles
     headlineMedium: GoogleFonts.manrope(
       fontWeight: FontWeight.w600,
       fontSize: 34,
@@ -49,21 +51,35 @@ TextTheme _buildLightTextTheme(TextTheme base) {
       height: 0.9,
       color: AppColors.black900,
     ),
+
+    // home ui welcome subtitle
     headlineSmall: GoogleFonts.manrope(
       fontWeight: FontWeight.bold,
-      fontSize: 24,
+      fontSize: 16,
       letterSpacing: 0.27,
-      color: AppColors.black900,
+      color: AppColors.darkGrey,
     ),
+
+    //for logo and in signin screen
     titleLarge: GoogleFonts.manrope(
       fontWeight: FontWeight.w900,
       fontSize: 24,
       letterSpacing: 0.18,
       // color: AppColors.white,
     ),
-    titleSmall: GoogleFonts.manrope(
+
+    // for small logo
+    titleMedium: GoogleFonts.manrope(
       fontWeight: FontWeight.w900,
       fontSize: 20,
+      letterSpacing: -0.04,
+      color: AppColors.black900,
+    ),
+
+    // home ui welcome title
+    titleSmall: GoogleFonts.manrope(
+      fontWeight: FontWeight.w700,
+      fontSize: 18,
       letterSpacing: -0.04,
       color: AppColors.black900,
     ),
