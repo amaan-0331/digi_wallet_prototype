@@ -1,3 +1,4 @@
+import 'package:digi_wallet_prototype/src/settings/settings_view.dart';
 import 'package:digi_wallet_prototype/src/shared/components/app_bar.dart';
 import 'package:digi_wallet_prototype/src/shared/theme/colors.dart';
 import 'package:flutter/material.dart';
@@ -16,10 +17,9 @@ class NotificationView extends StatelessWidget {
         ),
         actions: [
           IconButton(
-            onPressed: () {},
-            icon: SvgPicture.asset(
-              'assets/icons/setting.svg',
-            ),
+            onPressed: () =>
+                Navigator.pushNamed(context, SettingsView.routeName),
+            icon: SvgPicture.asset('assets/icons/setting.svg'),
           ),
         ],
       ),
