@@ -65,7 +65,6 @@ TextTheme _buildLightTextTheme(TextTheme base) {
       fontWeight: FontWeight.w900,
       fontSize: 24,
       letterSpacing: 0.18,
-      // color: AppColors.white,
     ),
 
     // for small logo

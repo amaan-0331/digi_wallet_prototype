@@ -2,6 +2,7 @@ import 'package:digi_wallet_prototype/src/home/bottom_nav_bar.dart';
 import 'package:digi_wallet_prototype/src/home/card_widget.dart';
 import 'package:digi_wallet_prototype/src/home/stock_list_tile.dart';
 import 'package:digi_wallet_prototype/src/home/wishlist_chip.dart';
+import 'package:digi_wallet_prototype/src/notifications/notifications_view.dart';
 import 'package:digi_wallet_prototype/src/shared/theme/colors.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -56,8 +57,16 @@ class _HomeViewState extends State<HomeView> {
                   'Welcome Back!',
                   style: Theme.of(context).textTheme.titleSmall,
                 ),
-                trailing: SvgPicture.asset(
-                  'assets/icons/notification_active.svg',
+                trailing: GestureDetector(
+                  onTap: () => Navigator.push(
+                    context,
+                    MaterialPageRoute<Widget>(
+                      builder: (context) => const NotificationView(),
+                    ),
+                  ),
+                  child: SvgPicture.asset(
+                    'assets/icons/notification_active.svg',
+                  ),
                 ),
                 contentPadding: const EdgeInsets.symmetric(horizontal: 24),
               ),
