@@ -1,8 +1,8 @@
 # Digi Wallet Prototype
 
-
 [![style: very good analysis](https://img.shields.io/badge/style-very_good_analysis-B22C89.svg)](https://pub.dev/packages/very_good_analysis) 
 
+**The Release APK can be found in _\build\app\outputs\flutter-apk_ of this repository**
 
 ## Guide for the Digi Wallet App
 
