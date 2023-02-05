@@ -2,12 +2,15 @@ import 'package:digi_wallet_prototype/src/home/components/bottom_nav_bar.dart';
 import 'package:digi_wallet_prototype/src/home/components/card_widget.dart';
 import 'package:digi_wallet_prototype/src/home/components/stock_list_tile.dart';
 import 'package:digi_wallet_prototype/src/home/components/wishlist_chip.dart';
+import 'package:digi_wallet_prototype/src/home/models/stock_model.dart';
+import 'package:digi_wallet_prototype/src/home/services/api_service.dart';
 import 'package:digi_wallet_prototype/src/money_request_feature/money_request_view.dart';
 import 'package:digi_wallet_prototype/src/notifications/notifications_view.dart';
 import 'package:digi_wallet_prototype/src/settings/settings_controller.dart';
 import 'package:digi_wallet_prototype/src/shared/theme/colors.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
@@ -20,10 +23,11 @@ class HomeView extends StatefulWidget {
 
 class _HomeViewState extends State<HomeView> {
   late PageController controller;
-
+  late Future<List<StockItem>> futureStockItems;
   @override
   void initState() {
     controller = PageController();
+    futureStockItems = StockApi().fetchStocks();
     super.initState();
   }
 
@@ -164,7 +168,7 @@ class _HomeViewState extends State<HomeView> {
                       title: r'$4,357.04',
                       subTitle: '+ 49,50%',
                       child: SvgPicture.asset(
-                        'assets/icons/amazon.svg',
+                        'assets/icons/amzn.svg',
                       ),
                     ),
                     const SizedBox(width: 15),
@@ -180,7 +184,7 @@ class _HomeViewState extends State<HomeView> {
                       title: r'$4,357.04',
                       subTitle: '+ 49,50%',
                       child: SvgPicture.asset(
-                        'assets/icons/tesla.svg',
+                        'assets/icons/tsla.svg',
                       ),
                     ),
                   ],
@@ -223,47 +227,139 @@ class _HomeViewState extends State<HomeView> {
               ),
               const SizedBox(height: 14),
               //listtile
-              ListView(
-                shrinkWrap: true,
-                physics: const NeverScrollableScrollPhysics(),
-                padding: const EdgeInsets.symmetric(horizontal: 24),
-                children: [
-                  StockListTile(
-                    leading: SvgPicture.asset(
-                      'assets/icons/amazon.svg',
-                    ),
-                    name: 'Amazone',
-                    price: r'$4357.04',
-                    date: '12 January 2022',
-                    percentage: '+49.50',
-                  ),
-                  const SizedBox(height: 10),
-                  StockListTile(
-                    leading: SvgPicture.asset(
-                      'assets/icons/apple.svg',
-                    ),
-                    name: 'Apple',
-                    price: r'$4357.04',
-                    date: '12 January 2022',
-                    percentage: '+49.50',
-                  ),
-                  const SizedBox(height: 10),
-                  StockListTile(
-                    leading: SvgPicture.asset(
-                      'assets/icons/tesla.svg',
-                    ),
-                    name: 'Tesla',
-                    price: r'$4357.04',
-                    date: '12 January 2022',
-                    percentage: '+49.50',
-                  ),
-                ],
+              FutureBuilder<List<StockItem>>(
+                future: futureStockItems,
+                builder: (context, snapshot) {
+                  if (snapshot.hasData) {
+                    final stockItems = snapshot.data;
+                    return ListView.separated(
+                      shrinkWrap: true,
+                      physics: const NeverScrollableScrollPhysics(),
+                      padding: const EdgeInsets.symmetric(horizontal: 24),
+                      itemCount: stockItems?.length ?? 0,
+                      itemBuilder: (context, index) {
+                        final stock = stockItems?[index];
+                        return StockListTile(
+                          leading: SvgPicture.asset(
+                            'assets/icons/${stock!.symbol.toLowerCase()}.svg',
+                          ),
+                          name: stock.symbol,
+                          price: stock.high.toString(),
+                          date: DateFormat('dd MMMM yyyy').format(stock.date),
+                          percentage: generatePercentage(stock),
+                        );
+                      },
+                      separatorBuilder: (context, index) =>
+                          const SizedBox(height: 10),
+                    );
+                  } else if (snapshot.hasError) {
+                    return Column(
+                      children: [
+                        Padding(
+                          padding: const EdgeInsets.all(24),
+                          child: Row(
+                            children: const [
+                              Icon(Icons.error_outline_rounded),
+                              SizedBox(width: 10),
+                              Expanded(
+                                child: Text(
+                                  // ignore: lines_longer_than_80_chars
+                                  'Something went Wrong with Real time fetching, Following is dummy Demo Data',
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                        ListView(
+                          shrinkWrap: true,
+                          physics: const NeverScrollableScrollPhysics(),
+                          padding: const EdgeInsets.symmetric(horizontal: 24),
+                          children: [
+                            StockListTile(
+                              leading: SvgPicture.asset(
+                                'assets/icons/amzn.svg',
+                              ),
+                              name: 'Amazone',
+                              price: r'$4357.04',
+                              date: '12 January 2022',
+                              percentage: '+49.50',
+                            ),
+                            const SizedBox(height: 10),
+                            StockListTile(
+                              leading: SvgPicture.asset(
+                                'assets/icons/aapl.svg',
+                              ),
+                              name: 'Apple',
+                              price: r'$4357.04',
+                              date: '12 January 2022',
+                              percentage: '+49.50',
+                            ),
+                            const SizedBox(height: 10),
+                            StockListTile(
+                              leading: SvgPicture.asset(
+                                'assets/icons/tsla.svg',
+                              ),
+                              name: 'Tesla',
+                              price: r'$4357.04',
+                              date: '12 January 2022',
+                              percentage: '+49.50',
+                            ),
+                          ],
+                        ),
+                      ],
+                    );
+                  } else {
+                    return const Center(child: CircularProgressIndicator());
+                  }
+                },
               ),
-              const SizedBox(height: 10),
+              // ListView(
+              //   shrinkWrap: true,
+              //   physics: const NeverScrollableScrollPhysics(),
+              //   padding: const EdgeInsets.symmetric(horizontal: 24),
+              //   children: [
+              //     StockListTile(
+              //       leading: SvgPicture.asset(
+              //         'assets/icons/amzn.svg',
+              //       ),
+              //       name: 'Amazone',
+              //       price: r'$4357.04',
+              //       date: '12 January 2022',
+              //       percentage: '+49.50',
+              //     ),
+              //     const SizedBox(height: 10),
+              //     StockListTile(
+              //       leading: SvgPicture.asset(
+              //         'assets/icons/aapl.svg',
+              //       ),
+              //       name: 'Apple',
+              //       price: r'$4357.04',
+              //       date: '12 January 2022',
+              //       percentage: '+49.50',
+              //     ),
+              //     const SizedBox(height: 10),
+              //     StockListTile(
+              //       leading: SvgPicture.asset(
+              //         'assets/icons/tsla.svg',
+              //       ),
+              //       name: 'Tesla',
+              //       price: r'$4357.04',
+              //       date: '12 January 2022',
+              //       percentage: '+49.50',
+              //     ),
+              //   ],
+              // ),
+              const SizedBox(height: 50),
             ],
           ),
         ),
       ),
     );
+  }
+
+  String generatePercentage(StockItem stock) {
+    final value = (stock.high - stock.low) / stock.open;
+    final sign = value > 0 ? '+' : '-';
+    return '$sign ${value.toStringAsFixed(2)} %';
   }
 }

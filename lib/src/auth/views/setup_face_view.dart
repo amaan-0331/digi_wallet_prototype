@@ -1,5 +1,5 @@
 import 'package:digi_wallet_prototype/src/auth/components/profile_scanner.dart';
-import 'package:digi_wallet_prototype/src/home/home_view.dart';
+import 'package:digi_wallet_prototype/src/home/views/home_view.dart';
 import 'package:digi_wallet_prototype/src/settings/settings_controller.dart';
 import 'package:digi_wallet_prototype/src/shared/components/app_bar.dart';
 import 'package:digi_wallet_prototype/src/shared/components/main_button.dart';

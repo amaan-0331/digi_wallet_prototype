@@ -80,7 +80,7 @@ class _SignInViewState extends State<SignInView> {
                     Expanded(
                       child: SecondaryButton(
                         buttonWidget: SvgPicture.asset(
-                          'assets/icons/apple.svg',
+                          'assets/icons/aapl.svg',
                           color: currentTheme == ThemeMode.dark
                               ? AppColors.white
                               : null,
