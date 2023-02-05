@@ -1,6 +1,6 @@
 // ignore_for_file: lines_longer_than_80_chars
 
-import 'package:digi_wallet_prototype/src/auth/signin_view.dart';
+import 'package:digi_wallet_prototype/src/auth/views/signin_view.dart';
 import 'package:digi_wallet_prototype/src/shared/components/hero_logo.dart';
 import 'package:digi_wallet_prototype/src/shared/components/main_button.dart';
 import 'package:digi_wallet_prototype/src/shared/theme/colors.dart';
@@ -85,7 +85,7 @@ class _OnboardingViewState extends State<OnboardingView> {
               ),
               buttonFunction: () => Navigator.push(
                 context,
-                MaterialPageRoute<SignInView>(
+                MaterialPageRoute<Widget>(
                   builder: (context) => const SignInView(),
                 ),
               ),

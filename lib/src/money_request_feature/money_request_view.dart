@@ -1,6 +1,6 @@
-import 'package:digi_wallet_prototype/src/money_request_feature/money_counter.dart';
-import 'package:digi_wallet_prototype/src/money_request_feature/oval_top_container.dart';
-import 'package:digi_wallet_prototype/src/money_request_feature/request_account_chip.dart';
+import 'package:digi_wallet_prototype/src/money_request_feature/components/money_counter.dart';
+import 'package:digi_wallet_prototype/src/money_request_feature/components/oval_top_container.dart';
+import 'package:digi_wallet_prototype/src/money_request_feature/components/request_account_chip.dart';
 import 'package:digi_wallet_prototype/src/settings/settings_controller.dart';
 import 'package:digi_wallet_prototype/src/shared/components/app_bar.dart';
 import 'package:digi_wallet_prototype/src/shared/theme/colors.dart';

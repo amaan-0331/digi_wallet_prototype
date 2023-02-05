@@ -1,7 +1,7 @@
-import 'package:digi_wallet_prototype/src/home/bottom_nav_bar.dart';
-import 'package:digi_wallet_prototype/src/home/card_widget.dart';
-import 'package:digi_wallet_prototype/src/home/stock_list_tile.dart';
-import 'package:digi_wallet_prototype/src/home/wishlist_chip.dart';
+import 'package:digi_wallet_prototype/src/home/components/bottom_nav_bar.dart';
+import 'package:digi_wallet_prototype/src/home/components/card_widget.dart';
+import 'package:digi_wallet_prototype/src/home/components/stock_list_tile.dart';
+import 'package:digi_wallet_prototype/src/home/components/wishlist_chip.dart';
 import 'package:digi_wallet_prototype/src/money_request_feature/money_request_view.dart';
 import 'package:digi_wallet_prototype/src/notifications/notifications_view.dart';
 import 'package:digi_wallet_prototype/src/settings/settings_controller.dart';

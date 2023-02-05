@@ -1,6 +1,6 @@
 // ignore_for_file: lines_longer_than_80_chars
 
-import 'package:digi_wallet_prototype/src/auth/verification_success_view.dart';
+import 'package:digi_wallet_prototype/src/auth/views/verification_success_view.dart';
 import 'package:digi_wallet_prototype/src/settings/settings_controller.dart';
 import 'package:digi_wallet_prototype/src/shared/components/form_field.dart';
 import 'package:digi_wallet_prototype/src/shared/components/hero_logo.dart';
@@ -138,7 +138,7 @@ class SignInView extends StatelessWidget {
                 ),
                 buttonFunction: () => Navigator.push(
                   context,
-                  MaterialPageRoute<VerificationSuccessView>(
+                  MaterialPageRoute<Widget>(
                     builder: (context) => const VerificationSuccessView(),
                   ),
                 ),

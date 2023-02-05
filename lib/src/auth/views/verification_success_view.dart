@@ -1,4 +1,4 @@
-import 'package:digi_wallet_prototype/src/auth/setup_face_view.dart';
+import 'package:digi_wallet_prototype/src/auth/views/setup_face_view.dart';
 import 'package:digi_wallet_prototype/src/settings/settings_controller.dart';
 import 'package:digi_wallet_prototype/src/shared/components/main_button.dart';
 import 'package:digi_wallet_prototype/src/shared/theme/colors.dart';
