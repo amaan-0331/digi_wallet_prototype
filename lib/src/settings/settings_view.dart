@@ -2,6 +2,7 @@ import 'package:digi_wallet_prototype/src/settings/settings_controller.dart';
 import 'package:digi_wallet_prototype/src/shared/components/app_bar.dart';
 import 'package:digi_wallet_prototype/src/shared/theme/colors.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 class SettingsView extends StatelessWidget {
   const SettingsView({super.key, required this.controller});
@@ -12,6 +13,7 @@ class SettingsView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final currentTheme = Provider.of<SettingsController>(context).themeMode;
     return Scaffold(
       appBar: CustomAppBar(
         title: Text(
@@ -41,6 +43,7 @@ class SettingsView extends StatelessWidget {
           buildSettingsTile(
             context,
             'Dark Mode',
+            currentTheme,
             Switch(
               value: controller.themeMode == ThemeMode.dark,
               activeColor: AppColors.blueGrey,
@@ -61,10 +64,12 @@ class SettingsView extends StatelessWidget {
           buildSettingsTile(
             context,
             'Notifications',
+            currentTheme,
           ),
           buildSettingsTile(
             context,
             'Reset Password',
+            currentTheme,
           ),
 
           //abour digi
@@ -86,14 +91,17 @@ class SettingsView extends StatelessWidget {
           buildSettingsTile(
             context,
             'Disclosure',
+            currentTheme,
           ),
           buildSettingsTile(
             context,
             'Privacy and Policy',
+            currentTheme,
           ),
           buildSettingsTile(
             context,
             'Feedback',
+            currentTheme,
           ),
           ListTile(
             title: Text(
@@ -112,18 +120,24 @@ class SettingsView extends StatelessWidget {
 
   Widget buildSettingsTile(
     BuildContext context,
-    String title, [
+    String title,
+    ThemeMode currentTheme, [
     Widget? trailing,
   ]) {
     return ListTile(
       title: Text(
         title,
-        style: Theme.of(context)
-            .textTheme
-            .titleSmall
-            ?.copyWith(color: AppColors.blackGrey),
+        style: Theme.of(context).textTheme.titleSmall?.copyWith(
+              color: currentTheme == ThemeMode.dark
+                  ? AppColors.white
+                  : AppColors.blackGrey,
+            ),
       ),
-      trailing: trailing ?? const Icon(Icons.arrow_forward_ios_rounded),
+      trailing: trailing ??
+          Icon(
+            Icons.arrow_forward_ios_rounded,
+            color: currentTheme == ThemeMode.dark ? AppColors.white : null,
+          ),
       contentPadding: const EdgeInsets.symmetric(horizontal: 24),
     );
   }

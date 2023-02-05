@@ -4,9 +4,11 @@ import 'package:digi_wallet_prototype/src/home/stock_list_tile.dart';
 import 'package:digi_wallet_prototype/src/home/wishlist_chip.dart';
 import 'package:digi_wallet_prototype/src/money_request_feature/money_request_view.dart';
 import 'package:digi_wallet_prototype/src/notifications/notifications_view.dart';
+import 'package:digi_wallet_prototype/src/settings/settings_controller.dart';
 import 'package:digi_wallet_prototype/src/shared/theme/colors.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:provider/provider.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
 class HomeView extends StatefulWidget {
@@ -27,6 +29,7 @@ class _HomeViewState extends State<HomeView> {
 
   @override
   Widget build(BuildContext context) {
+    final currentTheme = Provider.of<SettingsController>(context).themeMode;
     return Scaffold(
       extendBody: true,
       bottomNavigationBar: const BottomNavBar(),
@@ -97,10 +100,13 @@ class _HomeViewState extends State<HomeView> {
               SmoothPageIndicator(
                 controller: controller,
                 count: 3,
-                effect: const ExpandingDotsEffect(
+                effect: ExpandingDotsEffect(
                   dotHeight: 10,
                   dotWidth: 10,
                   expansionFactor: 2,
+                  dotColor: currentTheme == ThemeMode.dark
+                      ? AppColors.white
+                      : AppColors.darkGrey,
                   activeDotColor: AppColors.orange,
                 ),
                 onDotClicked: (index) {
@@ -123,7 +129,9 @@ class _HomeViewState extends State<HomeView> {
                     Text(
                       'Wishlist',
                       style: Theme.of(context).textTheme.labelMedium?.copyWith(
-                            color: AppColors.blackCharcoal,
+                            color: currentTheme == ThemeMode.dark
+                                ? AppColors.white
+                                : AppColors.blackCharcoal,
                             fontWeight: FontWeight.w700,
                             letterSpacing: 1,
                           ),
@@ -190,7 +198,9 @@ class _HomeViewState extends State<HomeView> {
                     Text(
                       'Stocks',
                       style: Theme.of(context).textTheme.labelMedium?.copyWith(
-                            color: AppColors.blackCharcoal,
+                            color: currentTheme == ThemeMode.dark
+                                ? AppColors.white
+                                : AppColors.blackCharcoal,
                             fontWeight: FontWeight.w700,
                             letterSpacing: 1,
                           ),

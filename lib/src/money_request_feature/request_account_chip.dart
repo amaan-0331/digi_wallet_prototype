@@ -1,5 +1,7 @@
+import 'package:digi_wallet_prototype/src/settings/settings_controller.dart';
 import 'package:digi_wallet_prototype/src/shared/theme/colors.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 class RequestAccountChip extends StatelessWidget {
   const RequestAccountChip({
@@ -14,6 +16,8 @@ class RequestAccountChip extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final width = MediaQuery.of(context).size.width;
+    final currentTheme = Provider.of<SettingsController>(context).themeMode;
+
     return Container(
       width: width / 2.75,
       height: 60,
@@ -42,7 +46,9 @@ class RequestAccountChip extends StatelessWidget {
                 title,
                 style: TextStyle(
                   fontSize: width * 0.035,
-                  color: AppColors.blackGrey,
+                  color: currentTheme == ThemeMode.dark
+                      ? AppColors.white
+                      : AppColors.blackGrey,
                 ),
               ),
 

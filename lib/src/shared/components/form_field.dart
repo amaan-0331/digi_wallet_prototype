@@ -1,6 +1,8 @@
+import 'package:digi_wallet_prototype/src/settings/settings_controller.dart';
 import 'package:digi_wallet_prototype/src/shared/theme/colors.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:provider/provider.dart';
 
 class FormTextInput extends StatelessWidget {
   const FormTextInput({
@@ -27,6 +29,7 @@ class FormTextInput extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final currentTheme = Provider.of<SettingsController>(context).themeMode;
     return Column(
       children: [
         //label
@@ -35,10 +38,11 @@ class FormTextInput extends StatelessWidget {
           children: [
             Text(
               labelText,
-              style: Theme.of(context)
-                  .textTheme
-                  .labelSmall
-                  ?.copyWith(color: AppColors.darkGrey),
+              style: Theme.of(context).textTheme.labelSmall?.copyWith(
+                    color: currentTheme == ThemeMode.light
+                        ? AppColors.darkGrey
+                        : AppColors.white,
+                  ),
             ),
             if (trailing != null) trailing!,
           ],
@@ -67,8 +71,13 @@ class FormTextInput extends StatelessWidget {
               controller: inputController,
               decoration: InputDecoration(
                 prefixIcon: Padding(
-                  padding: const EdgeInsets.all(8),
-                  child: SvgPicture.asset(iconLocation),
+                  padding: const EdgeInsets.all(11),
+                  child: SvgPicture.asset(
+                    iconLocation,
+                    color: currentTheme == ThemeMode.light
+                        ? null
+                        : AppColors.white,
+                  ),
                 ),
                 enabledBorder: InputBorder.none,
                 border: InputBorder.none,

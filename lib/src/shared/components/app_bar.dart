@@ -1,5 +1,7 @@
+import 'package:digi_wallet_prototype/src/settings/settings_controller.dart';
 import 'package:digi_wallet_prototype/src/shared/theme/colors.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 class CustomAppBar extends StatelessWidget with PreferredSizeWidget {
   const CustomAppBar({
@@ -14,23 +16,27 @@ class CustomAppBar extends StatelessWidget with PreferredSizeWidget {
 
   @override
   Widget build(BuildContext context) {
+    final currentTheme = Provider.of<SettingsController>(context).themeMode;
     return AppBar(
       // Overide the default Back button
       automaticallyImplyLeading: false,
       leadingWidth: 120,
       leading: ElevatedButton.icon(
         onPressed: () => Navigator.of(context).pop(),
-        icon: const Icon(
+        icon: Icon(
           Icons.keyboard_arrow_left_rounded,
           size: 40,
-          color: AppColors.black900,
+          color: currentTheme == ThemeMode.dark
+              ? AppColors.white
+              : AppColors.black900,
         ),
         label: Text(
           'Back',
-          style: Theme.of(context)
-              .textTheme
-              .labelMedium
-              ?.copyWith(color: AppColors.darkGrey),
+          style: Theme.of(context).textTheme.labelMedium?.copyWith(
+                color: currentTheme == ThemeMode.dark
+                    ? AppColors.lightGrey
+                    : AppColors.darkGrey,
+              ),
         ),
         style: ElevatedButton.styleFrom(
           elevation: 0,

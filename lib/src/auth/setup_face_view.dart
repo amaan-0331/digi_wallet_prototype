@@ -1,9 +1,11 @@
 import 'package:digi_wallet_prototype/src/auth/profile_scanner.dart';
 import 'package:digi_wallet_prototype/src/home/home_view.dart';
+import 'package:digi_wallet_prototype/src/settings/settings_controller.dart';
 import 'package:digi_wallet_prototype/src/shared/components/app_bar.dart';
 import 'package:digi_wallet_prototype/src/shared/components/main_button.dart';
 import 'package:digi_wallet_prototype/src/shared/theme/colors.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 class SetupFaceView extends StatefulWidget {
   const SetupFaceView({super.key});
@@ -56,6 +58,7 @@ class _SetupFaceViewState extends State<SetupFaceView>
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
+    final currentTheme = Provider.of<SettingsController>(context).themeMode;
 
     return Scaffold(
       appBar: const CustomAppBar(),
@@ -71,19 +74,21 @@ class _SetupFaceViewState extends State<SetupFaceView>
                 Text(
                   'Profile Verification',
                   textAlign: TextAlign.center,
-                  style: Theme.of(context)
-                      .textTheme
-                      .headlineLarge
-                      ?.copyWith(color: AppColors.black900),
+                  style: Theme.of(context).textTheme.headlineLarge?.copyWith(
+                        color: currentTheme == ThemeMode.dark
+                            ? AppColors.white
+                            : AppColors.black900,
+                      ),
                 ),
                 const SizedBox(height: 20),
                 Text(
                   'Unlock all features by verifying your identity',
                   textAlign: TextAlign.center,
-                  style: Theme.of(context)
-                      .textTheme
-                      .bodyLarge
-                      ?.copyWith(color: AppColors.darkGrey),
+                  style: Theme.of(context).textTheme.bodyLarge?.copyWith(
+                        color: currentTheme == ThemeMode.dark
+                            ? AppColors.lightGrey
+                            : AppColors.darkGrey,
+                      ),
                 ),
               ],
             ),

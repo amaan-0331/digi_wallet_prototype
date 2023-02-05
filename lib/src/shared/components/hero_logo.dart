@@ -1,5 +1,7 @@
+import 'package:digi_wallet_prototype/src/settings/settings_controller.dart';
 import 'package:digi_wallet_prototype/src/shared/theme/colors.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 class AppLogo extends StatelessWidget {
   const AppLogo({
@@ -11,6 +13,7 @@ class AppLogo extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final currentTheme = Provider.of<SettingsController>(context).themeMode;
     return Flex(
       direction: direction,
       mainAxisSize: MainAxisSize.min,
@@ -30,10 +33,11 @@ class AppLogo extends StatelessWidget {
               'Digi-Wallet',
               style: (direction == Axis.vertical)
                   ? Theme.of(context).textTheme.titleLarge
-                  : Theme.of(context)
-                      .textTheme
-                      .titleMedium
-                      ?.copyWith(color: AppColors.blackGrey),
+                  : Theme.of(context).textTheme.titleMedium?.copyWith(
+                        color: currentTheme == ThemeMode.light
+                            ? AppColors.blackGrey
+                            : AppColors.flashWhite,
+                      ),
             ),
           ),
         ),

@@ -1,10 +1,12 @@
 import 'package:digi_wallet_prototype/src/money_request_feature/money_counter.dart';
 import 'package:digi_wallet_prototype/src/money_request_feature/oval_top_container.dart';
 import 'package:digi_wallet_prototype/src/money_request_feature/request_account_chip.dart';
+import 'package:digi_wallet_prototype/src/settings/settings_controller.dart';
 import 'package:digi_wallet_prototype/src/shared/components/app_bar.dart';
 import 'package:digi_wallet_prototype/src/shared/theme/colors.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:provider/provider.dart';
 
 class MoneyRequestView extends StatelessWidget {
   const MoneyRequestView({super.key});
@@ -12,6 +14,7 @@ class MoneyRequestView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     var requestType = RequestType.send;
+    final currentTheme = Provider.of<SettingsController>(context).themeMode;
     return Scaffold(
       resizeToAvoidBottomInset: false,
       appBar: CustomAppBar(
@@ -30,10 +33,11 @@ class MoneyRequestView extends StatelessWidget {
               padding: const EdgeInsets.symmetric(horizontal: 25),
               child: Text(
                 'Choose Amount',
-                style: Theme.of(context)
-                    .textTheme
-                    .titleSmall
-                    ?.copyWith(color: AppColors.blackCharcoal),
+                style: Theme.of(context).textTheme.titleSmall?.copyWith(
+                      color: currentTheme == ThemeMode.dark
+                          ? AppColors.white
+                          : AppColors.blackCharcoal,
+                    ),
               ),
             ),
             const SizedBox(height: 10),
@@ -55,7 +59,9 @@ class MoneyRequestView extends StatelessWidget {
                   Text(
                     'Request account',
                     style: Theme.of(context).textTheme.labelMedium?.copyWith(
-                          color: AppColors.blackCharcoal,
+                          color: currentTheme == ThemeMode.dark
+                              ? AppColors.white
+                              : AppColors.blackCharcoal,
                           fontWeight: FontWeight.w700,
                           letterSpacing: 1,
                         ),
@@ -111,10 +117,11 @@ class MoneyRequestView extends StatelessWidget {
               padding: const EdgeInsets.symmetric(horizontal: 25),
               child: Text(
                 'Type of Request',
-                style: Theme.of(context)
-                    .textTheme
-                    .titleSmall
-                    ?.copyWith(color: AppColors.blackCharcoal),
+                style: Theme.of(context).textTheme.titleSmall?.copyWith(
+                      color: currentTheme == ThemeMode.dark
+                          ? AppColors.white
+                          : AppColors.blackCharcoal,
+                    ),
               ),
             ),
             const SizedBox(height: 10),
@@ -145,10 +152,11 @@ class MoneyRequestView extends StatelessWidget {
                       value: value,
                       child: Text(
                         value.name,
-                        style: Theme.of(context)
-                            .textTheme
-                            .bodyLarge
-                            ?.copyWith(color: AppColors.blackCharcoal),
+                        style: Theme.of(context).textTheme.bodyLarge?.copyWith(
+                              color: currentTheme == ThemeMode.dark
+                                  ? AppColors.flashWhite
+                                  : AppColors.blackCharcoal,
+                            ),
                       ),
                     );
                   }).toList(),

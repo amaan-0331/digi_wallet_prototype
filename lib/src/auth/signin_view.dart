@@ -1,6 +1,7 @@
 // ignore_for_file: lines_longer_than_80_chars
 
 import 'package:digi_wallet_prototype/src/auth/verification_success_view.dart';
+import 'package:digi_wallet_prototype/src/settings/settings_controller.dart';
 import 'package:digi_wallet_prototype/src/shared/components/form_field.dart';
 import 'package:digi_wallet_prototype/src/shared/components/hero_logo.dart';
 import 'package:digi_wallet_prototype/src/shared/components/main_button.dart';
@@ -8,6 +9,7 @@ import 'package:digi_wallet_prototype/src/shared/components/secondary_button.dar
 import 'package:digi_wallet_prototype/src/shared/theme/colors.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:provider/provider.dart';
 
 class SignInView extends StatelessWidget {
   const SignInView({super.key});
@@ -15,6 +17,8 @@ class SignInView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
+    final currentTheme = Provider.of<SettingsController>(context).themeMode;
+
     return Scaffold(
       body: SafeArea(
         child: Container(
@@ -33,10 +37,11 @@ class SignInView extends StatelessWidget {
                 children: [
                   Text(
                     'Signin',
-                    style: Theme.of(context)
-                        .textTheme
-                        .titleLarge
-                        ?.copyWith(color: AppColors.black900),
+                    style: Theme.of(context).textTheme.titleLarge?.copyWith(
+                          color: currentTheme == ThemeMode.dark
+                              ? AppColors.white
+                              : AppColors.black900,
+                        ),
                   ),
                   const SizedBox(height: 20),
                   Text(
@@ -61,7 +66,12 @@ class SignInView extends StatelessWidget {
                   const SizedBox(width: 15),
                   Expanded(
                     child: SecondaryButton(
-                      buttonWidget: SvgPicture.asset('assets/icons/apple.svg'),
+                      buttonWidget: SvgPicture.asset(
+                        'assets/icons/apple.svg',
+                        color: currentTheme == ThemeMode.dark
+                            ? AppColors.white
+                            : null,
+                      ),
                       buttonFunction: () {},
                       height: 66,
                     ),
@@ -108,10 +118,11 @@ class SignInView extends StatelessWidget {
                 hintText: 'enter password',
                 trailing: Text(
                   'forgot password',
-                  style: Theme.of(context)
-                      .textTheme
-                      .labelSmall
-                      ?.copyWith(color: AppColors.darkGrey),
+                  style: Theme.of(context).textTheme.labelSmall?.copyWith(
+                        color: currentTheme == ThemeMode.light
+                            ? AppColors.darkGrey
+                            : AppColors.flashWhite,
+                      ),
                 ),
               ),
               const SizedBox(height: 24),

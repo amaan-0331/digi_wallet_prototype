@@ -1,6 +1,8 @@
+import 'package:digi_wallet_prototype/src/settings/settings_controller.dart';
 import 'package:digi_wallet_prototype/src/shared/theme/colors.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:provider/provider.dart';
 
 class MoneyCounter extends StatefulWidget {
   const MoneyCounter({super.key});
@@ -15,10 +17,14 @@ class _MoneyCounterState extends State<MoneyCounter> {
 
   @override
   Widget build(BuildContext context) {
+    final currentTheme = Provider.of<SettingsController>(context).themeMode;
+
     return Container(
       padding: const EdgeInsets.symmetric(horizontal: 40, vertical: 50),
       decoration: BoxDecoration(
-        color: const Color.fromARGB(255, 241, 241, 241),
+        color: currentTheme == ThemeMode.dark
+            ? AppColors.blackCharcoal
+            : AppColors.whiteGrey,
         borderRadius: BorderRadius.circular(12),
       ),
       child: Row(
@@ -28,7 +34,9 @@ class _MoneyCounterState extends State<MoneyCounter> {
               Icons.remove_circle_rounded,
               size: 45,
             ),
-            color: AppColors.darkGrey,
+            color: currentTheme == ThemeMode.dark
+                ? AppColors.lightGrey
+                : AppColors.darkGrey.withOpacity(0.5),
             onPressed: decreaseValue,
           ),
           Expanded(
@@ -62,18 +70,24 @@ class _MoneyCounterState extends State<MoneyCounter> {
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        const Text(
+                        Text(
                           r'$',
                           style: TextStyle(
                             fontSize: 30,
+                            color: currentTheme == ThemeMode.dark
+                                ? AppColors.white
+                                : AppColors.black900,
                             fontWeight: FontWeight.bold,
                           ),
                         ),
                         Text(
                           '${double.tryParse(controller.text) ?? 0}',
-                          style: const TextStyle(
+                          style: TextStyle(
                             fontSize: 30,
                             fontWeight: FontWeight.bold,
+                            color: currentTheme == ThemeMode.dark
+                                ? AppColors.white
+                                : AppColors.black900,
                           ),
                         ),
                       ],
@@ -88,7 +102,9 @@ class _MoneyCounterState extends State<MoneyCounter> {
               Icons.add_circle_rounded,
               size: 45,
             ),
-            color: AppColors.darkGrey,
+            color: currentTheme == ThemeMode.dark
+                ? AppColors.lightGrey
+                : AppColors.darkGrey.withOpacity(0.5),
             onPressed: increaseValue,
           ),
         ],

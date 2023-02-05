@@ -1,5 +1,7 @@
+import 'package:digi_wallet_prototype/src/settings/settings_controller.dart';
 import 'package:digi_wallet_prototype/src/shared/theme/colors.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 class StockListTile extends StatelessWidget {
   const StockListTile({
@@ -20,9 +22,12 @@ class StockListTile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final width = MediaQuery.of(context).size.width;
+    final currentTheme = Provider.of<SettingsController>(context).themeMode;
     return Container(
       decoration: BoxDecoration(
-        color: AppColors.lightGrey,
+        color: currentTheme == ThemeMode.dark
+            ? AppColors.blackCharcoal
+            : AppColors.lightGrey,
         borderRadius: BorderRadius.circular(12),
       ),
       width: width,
@@ -32,7 +37,9 @@ class StockListTile extends StatelessWidget {
         children: [
           DecoratedBox(
             decoration: BoxDecoration(
-              color: Colors.white,
+              color: currentTheme == ThemeMode.dark
+                  ? AppColors.lightGrey
+                  : Colors.white,
               borderRadius: BorderRadius.circular(12),
             ),
             child: Padding(
@@ -45,14 +52,16 @@ class StockListTile extends StatelessWidget {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
-                // price
+                // name / price
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Text(
                       name,
                       style: TextStyle(
-                        color: AppColors.blackGrey,
+                        color: currentTheme == ThemeMode.dark
+                            ? AppColors.white
+                            : AppColors.blackGrey,
                         fontSize: width * 0.038,
                       ),
                     ),
@@ -60,7 +69,9 @@ class StockListTile extends StatelessWidget {
                       price,
                       style: TextStyle(
                         fontSize: width * 0.038,
-                        color: AppColors.blackGrey,
+                        color: currentTheme == ThemeMode.dark
+                            ? AppColors.white
+                            : AppColors.blackGrey,
                       ),
                     ),
                   ],
@@ -72,7 +83,9 @@ class StockListTile extends StatelessWidget {
                       date,
                       style: TextStyle(
                         fontSize: width * 0.034,
-                        color: AppColors.darkGrey,
+                        color: currentTheme == ThemeMode.dark
+                            ? AppColors.flashWhite
+                            : AppColors.darkGrey,
                       ),
                     ),
                     Text(
