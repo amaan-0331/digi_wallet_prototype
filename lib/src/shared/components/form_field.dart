@@ -39,6 +39,7 @@ class FormTextInput extends StatelessWidget {
             Text(
               labelText,
               style: Theme.of(context).textTheme.labelSmall?.copyWith(
+                    fontSize: 14,
                     color: currentTheme == ThemeMode.light
                         ? AppColors.darkGrey
                         : AppColors.white,
@@ -82,7 +83,12 @@ class FormTextInput extends StatelessWidget {
                 enabledBorder: InputBorder.none,
                 border: InputBorder.none,
                 focusedBorder: InputBorder.none,
-                errorBorder: InputBorder.none,
+                errorBorder: const OutlineInputBorder(
+                  borderSide: BorderSide(color: Colors.transparent),
+                ),
+                focusedErrorBorder: const OutlineInputBorder(
+                  borderSide: BorderSide(color: Colors.transparent),
+                ),
                 hintText: hintText,
                 hintStyle: Theme.of(context).textTheme.bodySmall,
               ),
