@@ -41,6 +41,6 @@ ColorScheme buildDarkColorScheme() {
     primary: AppColors.orange,
     secondary: AppColors.navy,
     error: AppColors.errorDark,
-    background: AppColors.white,
+    surface: AppColors.white,
   );
 }

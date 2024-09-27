@@ -5,7 +5,6 @@ import 'package:google_fonts/google_fonts.dart';
 ThemeData buildLightTheme() {
   final base = ThemeData.light();
   return base.copyWith(
-    useMaterial3: true,
     colorScheme: buildLightColorScheme(),
     bottomSheetTheme: const BottomSheetThemeData(
       backgroundColor: Colors.transparent,
@@ -21,7 +20,6 @@ ThemeData buildLightTheme() {
 ThemeData buildDarkTheme() {
   final base = ThemeData.dark();
   return base.copyWith(
-    useMaterial3: true,
     colorScheme: buildDarkColorScheme(),
     textTheme: _buildDarkTextTheme(base.textTheme),
     bottomSheetTheme: const BottomSheetThemeData(

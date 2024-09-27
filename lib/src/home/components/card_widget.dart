@@ -39,7 +39,7 @@ class CardWidget extends StatelessWidget {
                     SvgPicture.asset(
                       'assets/icons/mastercard.svg',
                       height: 40,
-                    )
+                    ),
                   ],
                 ),
                 Row(

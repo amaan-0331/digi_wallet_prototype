@@ -59,7 +59,7 @@ class _MoneyCounterState extends State<MoneyCounter> {
                   inputFormatters: <TextInputFormatter>[
                     FilteringTextInputFormatter.digitsOnly,
                     LengthLimitingTextInputFormatter(5),
-                    FilteringTextInputFormatter.deny(RegExp('^0+'))
+                    FilteringTextInputFormatter.deny(RegExp('^0+')),
                   ],
                   backgroundCursorColor: Colors.transparent,
                   textAlign: TextAlign.center,

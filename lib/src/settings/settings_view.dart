@@ -49,7 +49,7 @@ class SettingsView extends StatelessWidget {
               activeColor: AppColors.blueGrey,
               inactiveThumbColor: AppColors.white,
               inactiveTrackColor: AppColors.blueGrey,
-              thumbColor: MaterialStateProperty.resolveWith<Color?>(
+              thumbColor: WidgetStateProperty.resolveWith<Color?>(
                 (states) => Colors.white,
               ),
               onChanged: (bool value) {

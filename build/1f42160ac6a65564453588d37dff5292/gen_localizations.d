@@ -1,0 +1,1 @@
+ /home/user/digi_wallet_prototype/.dart_tool/flutter_gen/gen_l10n/app_localizations_en.dart /home/user/digi_wallet_prototype/.dart_tool/flutter_gen/gen_l10n/app_localizations.dart:  /home/user/digi_wallet_prototype/l10n.yaml /home/user/digi_wallet_prototype/lib/src/localization/app_en.arb

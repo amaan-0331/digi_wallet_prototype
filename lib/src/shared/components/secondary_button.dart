@@ -23,8 +23,8 @@ class SecondaryButton extends StatelessWidget {
         borderRadius: BorderRadius.all(Radius.circular(12)),
       ),
     ).copyWith(
-      side: MaterialStateProperty.resolveWith<BorderSide?>(
-        (Set<MaterialState> states) {
+      side: WidgetStateProperty.resolveWith<BorderSide?>(
+        (Set<WidgetState> states) {
           return const BorderSide(
             color: AppColors.lightGrey,
           );

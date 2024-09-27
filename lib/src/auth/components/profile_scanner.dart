@@ -47,7 +47,7 @@ class ProfileScanner extends StatelessWidget {
               stopped: animationStopped,
               width: height,
               animation: animationController,
-            )
+            ),
           ],
         ),
       ),

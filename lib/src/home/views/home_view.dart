@@ -255,10 +255,10 @@ class _HomeViewState extends State<HomeView> {
                   } else if (snapshot.hasError) {
                     return Column(
                       children: [
-                        Padding(
-                          padding: const EdgeInsets.all(24),
+                        const Padding(
+                          padding: EdgeInsets.all(24),
                           child: Row(
-                            children: const [
+                            children: [
                               Icon(Icons.error_outline_rounded),
                               SizedBox(width: 10),
                               Expanded(
